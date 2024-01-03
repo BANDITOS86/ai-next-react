@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@components/*": ["./src/components/*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -27,7 +30,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/components/DarkModeToggle/DarkModeToggle.jsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import Button from '../components/Button/Button'
+import Button from '@components/Button/Button'
 import Hero from "../../public/hero.png"
 
 export default function Home() {

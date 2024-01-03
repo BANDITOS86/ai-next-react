@@ -5,7 +5,7 @@ import Image from "next/image";
 const Blog = () => {
   return (
     <div className={styles.mainContainer}>
-      <Link className={styles.container} href="block/test1" key="1">
+      <Link className={styles.container} href="blog/test1" key="1">
         <div className={styles.imageContainer}>
           <Image 
             className={styles.image}
@@ -20,7 +20,7 @@ const Blog = () => {
           <p className={styles.desc}>Desc</p>
         </div>
       </Link>
-      {/* <Link className={styles.container} href="block/test2" key="2">
+      <Link className={styles.container} href="block/test2" key="2">
         <div className={styles.imageContainer}>
           <Image 
             className={styles.image}
@@ -34,7 +34,7 @@ const Blog = () => {
           <h1 className={styles.title}>Title</h1>
           <p className={styles.desc}>Desc</p>
         </div>
-      </Link> */}
+      </Link>
     </div>
   )
 }
