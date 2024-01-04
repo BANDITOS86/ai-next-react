@@ -1,33 +1,41 @@
-import Button from '@components/Button/Button';
 import Image from "next/image"
 import styles from './page.module.css';
+import Button from '@components/Button/Button';
+import { items } from "./data";
+import { notFound } from "next/navigation";
+
+const getData = (cat) => {
+  const data = items[cat]
+
+  if (data) {
+    return data;
+  }
+
+  return notFound();
+}
 
 
 const Category = ({ params }) => {
   // console.log(params);
+  const data = getData(params.category);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.catTitle}>{params.category}</h1>
-      <div className={styles.item} key="1">
-        <div className={styles.content}>
-          <h1 className={styles.title}>test</h1>
-          <p className={styles.desc}>desc</p>
-          <Button text="See More" url="#" />
+
+      {data.map((item) => (
+        <div className={styles.item} key={item.div}>
+          <div className={styles.content}>
+            <h1 className={styles.title}>{item.title}</h1>
+            <p className={styles.desc}>{item.desc}</p>
+            <Button text="See More" url="#" />
+          </div>
+          <div className={styles.imgContainer}>
+            <Image className={styles.img} fill={true} src={item.image} alt={item.title} />
+          </div>
         </div>
-        <div className={styles.imgContainer}>
-          <Image className={styles.img} fill={true} src="https://img.freepik.com/free-vector/tiny-house-concept-illustration_114360-9087.jpg?size=626&ext=jpg&ga=GA1.1.465634580.1703669057&semt=sph" alt="" />
-        </div>
-      </div>
-      <div className={styles.item} key="2">
-        <div className={styles.content}>
-          <h1 className={styles.title}>test</h1>
-          <p className={styles.desc}>desc</p>
-          <Button text="See More" url="#" />
-        </div>
-        <div className={styles.imgContainer}>
-          <Image className={styles.img} fill={true} src="https://img.freepik.com/free-vector/tiny-house-concept-illustration_114360-9087.jpg?size=626&ext=jpg&ga=GA1.1.465634580.1703669057&semt=sph" alt="" />
-        </div>
-      </div>
+      ))}
+
     </div>
   )
 }
