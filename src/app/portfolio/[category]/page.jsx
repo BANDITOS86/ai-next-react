@@ -18,6 +18,7 @@ const getData = (cat) => {
 const Category = ({ params }) => {
   // console.log(params);
   const data = getData(params.category);
+  console.log(data);
 
   return (
     <div className={styles.container}>
