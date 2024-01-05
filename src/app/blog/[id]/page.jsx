@@ -2,13 +2,21 @@ import Image from "next/image"
 import styles from './page.module.css';
 
 async function getData(id) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, { cache: 'no-store' })
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`, { cache: 'no-store' })
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
 
   return res.json()
+}
+
+export async function generateMetadata({ params }) {
+  const post = await getData(params.id)
+  return {
+    title: post.title,
+    description: post.desc,
+  }
 }
 
 const BlogId = async ({params}) => {
@@ -19,22 +27,22 @@ const BlogId = async ({params}) => {
       <div className={styles.top}>
         <div className={styles.info}>
           <h1 className={styles.title}>{data.title}</h1>
-          <p className={styles.desc}>{data.body}</p>
+          <p className={styles.desc}>{data.desc}</p>
           <div className={styles.author}>
             <Image
               className={styles.avatar}
-              src=""
+              src={data.img}
               width={40}
               height={40}
               alt=""
             />
-            <span className={styles.username}>username</span>
+            <span className={styles.username}>{data.username}</span>
           </div>
         </div>
         <div className={styles.imageContainer}>
           <Image
             className={styles.image}
-            src=""
+            src={data.img}
             fill={true}
             alt=""
           />
@@ -42,7 +50,7 @@ const BlogId = async ({params}) => {
       </div>
       <div className={styles.content}>
         <p className={styles.text}>
-          desc
+          {data.content}
         </p>
       </div>
     </div>

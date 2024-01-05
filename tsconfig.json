@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "paths": {
-      "@components/*": ["./src/components/*"]
+      "@components/*": [
+        "./src/components/*"
+      ]
     },
     "lib": [
       "dom",
@@ -23,14 +25,16 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/components/DarkModeToggle/DarkModeToggle.jsx"  ],
+    "**/*.tsx",
+    "src/components/DarkModeToggle/DarkModeToggle.jsx"
+  ],
   "exclude": [
     "node_modules"
   ]
